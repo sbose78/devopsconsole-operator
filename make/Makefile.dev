@@ -16,7 +16,7 @@ create-resources:
 	@oc login -u system:admin
 	@echo "Creating sub resources..."
 	@echo "Creating CRDs..."
-	@oc create -f $(DEPLOY_DIR)/crds/devopsconsole_v1alpha1_gitsource_crd.yaml
+	@oc create -f $(DEPLOY_DIR)/crds/devconsole_v1alpha1_gitsource_crd.yaml
 	@echo "Creating Namespace"
 	@oc create -f $(DEPLOY_DIR)/namespace.yaml
 	@echo "oc project codeready-devconsole"
@@ -66,7 +66,7 @@ clean-resources:
 	@echo "Deleting Namespace"
 	@oc delete -f $(DEPLOY_DIR)/namespace.yaml || true
 	@echo "Deleting Custom Resource Definitions..."
-	@oc delete -f $(DEPLOY_DIR)/crds/devopsconsole_v1alpha1_gitsource_crd.yaml || true
+	@oc delete -f $(DEPLOY_DIR)/crds/devconsole_v1alpha1_gitsource_crd.yaml || true
 
 .PHONY: deploy-operator
 deploy-operator: build build-image deploy-operator-only

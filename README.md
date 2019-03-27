@@ -1,4 +1,4 @@
-# DevOpsConsole
+# devconsole
 
 This repository was initially bootstrapped using [CoreOS operator](https://github.com/operator-framework/operator-sdk). 
 
@@ -22,7 +22,7 @@ make build
 ### Set up Minishift (one-off)
 * create a new profile to test the operator
 ```
-minishift profile set devopsconsole
+minishift profile set devconsole
 ```
 * enable the admin-user add-on
 ```
@@ -66,7 +66,7 @@ make deploy-test
 ```
 * See the newly created resources
 ```
-oc get is,bc,svc,component.devopsconsole,build
+oc get is,bc,svc,component.devconsole,build
 NAME                                           DOCKER REPO                               TAGS      UPDATED
 imagestream.image.openshift.io/myapp-output    172.30.1.1:5000/myproject/myapp-output
 imagestream.image.openshift.io/myapp-runtime   172.30.1.1:5000/myproject/myapp-runtime   latest    46 seconds ago
@@ -75,7 +75,7 @@ NAME                                      TYPE      FROM         LATEST
 buildconfig.build.openshift.io/myapp-bc   Source    Git@master   1
 
 NAME                                         AGE
-component.devopsconsole.openshift.io/myapp   48s
+component.devconsole.openshift.io/myapp   48s
 
 NAME                                  TYPE      FROM          STATUS    STARTED          DURATION
 build.build.openshift.io/myapp-bc-1   Source    Git@85ac14e   Running   45 seconds ago
@@ -98,14 +98,14 @@ Please consult [the documentation](https://github.com/operator-framework/operato
 
 ## Enabling the DevOps perspective in OpenShift
 
-The frontend can check for the presence of the DevOpsConsole CRDs using the Kubernetes API.  Check for [the existence of a Custom Resource Definitions](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#list-customresourcedefinition-v1beta1-apiextensions) with name as `gitsources.devopsconsole.openshift.io`.  If it exists, it will enable the DevOps perspective in the Openshift Console.
+The frontend can check for the presence of the devconsole CRDs using the Kubernetes API.  Check for [the existence of a Custom Resource Definitions](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.13/#list-customresourcedefinition-v1beta1-apiextensions) with name as `gitsources.devconsole.openshift.io`.  If it exists, it will enable the DevOps perspective in the Openshift Console.
 
 To install the DevOps Console operator and run it using OLM
 
 ```
 kubectl create -f https://raw.githubusercontent.com/operator-framework/operator-lifecycle-manager/master/deploy/upstream/quickstart/olm.yaml
 
-kubectl create -f http://operator-hub-shbose-preview1-stage.b542.starter-us-east-2a.openshiftapps.com/install/devopsconsole.v0.1.0.yaml
+kubectl create -f http://operator-hub-shbose-preview1-stage.b542.starter-us-east-2a.openshiftapps.com/install/devconsole.v0.1.0.yaml
 ```
 
 A `CatalogSource` followed by a new `Subscription` is created when the above commands are executed.
@@ -125,11 +125,11 @@ spec:
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: my-devopsconsole
+  name: my-devconsole
   namespace: operators
 spec:
   channel: alpha
-  name: devopsconsole
+  name: devconsole
   source: rhd-operatorhub-catalog
   sourceNamespace: olm
 ```

@@ -1,4 +1,4 @@
-// Package v1alpha1 contains API Schema definitions for the devopsconsole-operator v1alpha1 API group
+// Package v1alpha1 contains API Schema definitions for the devconsole-operator v1alpha1 API group
 // +k8s:deepcopy-gen=package,register
-// +groupName=devopsconsole.openshift.io
+// +groupName=devconsole.openshift.io
 package v1alpha1
